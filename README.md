@@ -9,9 +9,11 @@ Source repository: https://github.com/1205680593-droid/news-community-demo
 ## Pages and interaction
 
 - The home screen opens by default.
+- Use the Demo tabs above the phone to switch directly between `新闻首页 / News home` and `新闻内页 / News article`.
 - Tap the lead story to open the article.
 - Tap an inline home comment to open the article at `News comments`.
-- Inline-comment likes sit on the card edge without taking space from the two-line comment text.
+- The Demo tabs stay synchronized with lead-story entry, comment entry, and the article back button.
+- Inline comments keep the avatar, user name/time, and like count in one metadata row above the two-line comment text.
 - Swipe the article's `Top news comments` carousel horizontally.
 - Use the article back button to return to the home feed.
 

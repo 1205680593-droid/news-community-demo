@@ -3,6 +3,7 @@
 ## Scope
 
 - One standalone static site combines the former home and article-entry demos.
+- A visible Demo-level tab bar switches directly between the news home and news article screens.
 - The site excludes the requirements panel, solution tabs, and the other five prototype screens.
 - All image assets are local to `assets/`; no external image request is required.
 
@@ -14,9 +15,11 @@
 ## Verified Interactions
 
 - Lead story opens the article at the top.
+- Demo tabs switch directly between `News home` and `News article`.
 - Article back button restores the home screen.
 - Home inline comment opens the article at `News comments`.
 - Home inline comments show the avatar, user name with publish time below it, and like count in one metadata row; the full-width comment body remains below and is capped at two lines.
+- Demo tab state stays synchronized after lead-story entry, inline-comment entry, and article back navigation.
 - The news-comment carousel exposes the next card and moves from `1 / 3` to `2 / 3` after a horizontal drag.
 - Article reaction buttons retain a selected state.
 

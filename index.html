@@ -26,7 +26,7 @@
 
     body {
       min-width: 320px;
-      overflow: hidden;
+      overflow: auto;
       background: #e9edf2;
       color: var(--ink);
       font-family: Arial, Helvetica, sans-serif;
@@ -35,10 +35,74 @@
 
     button { font: inherit; }
 
+    .demo-shell {
+      min-height: 100dvh;
+      padding: 12px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .demo-switcher {
+      width: min(390px, 100%);
+      padding: 4px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+      flex: none;
+      border: 1px solid #d9dde5;
+      border-radius: 8px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 8px 24px rgba(17, 24, 39, .08);
+    }
+
+    .demo-switcher button {
+      min-width: 0;
+      min-height: 42px;
+      padding: 5px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #7c828c;
+      cursor: pointer;
+    }
+
+    .demo-switcher button strong {
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .demo-switcher button small {
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .demo-switcher button.active {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(17, 24, 39, .1);
+    }
+
+    .demo-switcher button.active strong::after {
+      content: "";
+      width: 18px;
+      height: 2px;
+      margin: 4px auto 0;
+      display: block;
+      background: var(--red);
+    }
+
     .app {
       width: 390px;
-      height: min(844px, calc(100dvh - 32px));
-      margin: 16px auto;
+      height: min(844px, calc(100dvh - 82px));
+      margin: 0 auto;
       overflow: hidden;
       position: relative;
       background: #fff;
@@ -751,9 +815,28 @@
 
     @media (max-width: 480px) {
       body { background: #fff; }
+      .demo-shell {
+        min-height: 100dvh;
+        padding: 0;
+        gap: 0;
+      }
+
+      .demo-switcher {
+        width: 100%;
+        padding: 5px 12px;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+        background: #f8f9fb;
+        box-shadow: none;
+      }
+
+      .demo-switcher button { min-height: 47px; }
+
       .app {
         width: 100%;
-        height: 100dvh;
+        height: calc(100dvh - 58px);
+        min-height: 640px;
         margin: 0;
         border: 0;
         border-radius: 0;
@@ -770,7 +853,19 @@
   </style>
 </head>
 <body>
-  <main class="app" aria-label="News community demo">
+  <main class="demo-shell" aria-label="News community demo">
+    <nav class="demo-switcher" role="tablist" aria-label="Demo pages">
+      <button class="active" type="button" role="tab" data-demo-screen="home" aria-controls="home-screen" aria-selected="true">
+        <strong>新闻首页</strong>
+        <small>News home</small>
+      </button>
+      <button type="button" role="tab" data-demo-screen="article" aria-controls="article-screen" aria-selected="false">
+        <strong>新闻内页</strong>
+        <small>News article</small>
+      </button>
+    </nav>
+
+    <div class="app" aria-label="News community demo">
     <section class="screen active" id="home-screen" aria-label="News home">
       <header class="home-head">
         <div class="status-bar"><span>09:34&nbsp; ◦</span><span class="signals">▮▮▮ <span class="battery"></span></span></div>
@@ -893,6 +988,7 @@
         </section>
       </div>
     </section>
+    </div>
   </main>
 
   <script>
@@ -901,10 +997,20 @@
     const homeScroll = document.querySelector('[data-home-scroll]');
     const articleScroll = document.querySelector('[data-article-scroll]');
     const commentsSection = document.getElementById('news-comments');
+    const demoTabs = Array.from(document.querySelectorAll('[data-demo-screen]'));
+
+    function syncDemoTab(screen) {
+      demoTabs.forEach((tab) => {
+        const active = tab.dataset.demoScreen === screen;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+    }
 
     function showArticle(targetComments = false) {
       homeScreen.classList.remove('active');
       articleScreen.classList.add('active');
+      syncDemoTab('article');
       articleScroll.scrollTop = 0;
       if (targetComments) requestAnimationFrame(() => commentsSection.scrollIntoView({ block: 'start' }));
     }
@@ -912,7 +1018,16 @@
     function showHome() {
       articleScreen.classList.remove('active');
       homeScreen.classList.add('active');
+      syncDemoTab('home');
+      homeScroll.scrollTop = 0;
     }
+
+    demoTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        if (tab.dataset.demoScreen === 'article') showArticle(false);
+        else showHome();
+      });
+    });
 
     document.querySelector('[data-open-article]').addEventListener('click', () => showArticle(false));
     document.querySelectorAll('[data-open-comments]').forEach((button) => button.addEventListener('click', () => showArticle(true)));
