@@ -353,6 +353,23 @@
       display: block;
     }
 
+    .inline-comment-meta {
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .inline-comment-meta strong {
+      min-width: 0;
+      overflow: hidden;
+      color: #252a33;
+      font-size: 10px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .inline-comment-content p {
       margin: 0;
       display: -webkit-box;
@@ -365,9 +382,7 @@
     }
 
     .inline-like {
-      position: absolute;
-      right: 8px;
-      bottom: -12px;
+      margin-left: auto;
       min-height: 18px;
       padding: 0 6px;
       border: 1px solid #dfe4ed;
@@ -767,7 +782,7 @@
           <div class="news-thumb"><img src="./assets/news-thumb.png" alt="Player news thumbnail"></div>
           <button class="inline-comment" type="button" data-open-comments>
             <i class="comment-avatar" style="background-image:url('./assets/avatar-2.jpg')"></i>
-            <span class="inline-comment-content"><p>Conceding three does not mean he played badly. He saved two clear chances.</p><span class="inline-like">👍 612</span></span>
+            <span class="inline-comment-content"><span class="inline-comment-meta"><strong>Keeper Union</strong><span class="inline-like">👍 612</span></span><p>Conceding three does not mean he played badly. He saved two clear chances.</p></span>
           </button>
         </article>
 
@@ -776,7 +791,7 @@
           <div class="news-thumb"><img src="./assets/stadium.jpg" alt="Stadium at night"></div>
           <button class="inline-comment" type="button" data-open-comments>
             <i class="comment-avatar" style="background-image:url('./assets/avatar-3.jpg')"></i>
-            <span class="inline-comment-content"><p>Mianzambi did more than score. His runs made Switzerland's attack flow.</p><span class="inline-like">👍 284</span></span>
+            <span class="inline-comment-content"><span class="inline-comment-meta"><strong>Alpine End</strong><span class="inline-like">👍 284</span></span><p>Mianzambi did more than score. His runs made Switzerland's attack flow.</p></span>
           </button>
         </article>
 
