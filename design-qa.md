@@ -16,7 +16,7 @@
 - Lead story opens the article at the top.
 - Article back button restores the home screen.
 - Home inline comment opens the article at `News comments`.
-- Home inline-comment likes float across the card's bottom-right border without reducing the two-line text width.
+- Home inline comments show the avatar, user name with publish time below it, and like count in one metadata row; the full-width comment body remains below and is capped at two lines.
 - The news-comment carousel exposes the next card and moves from `1 / 3` to `2 / 3` after a horizontal drag.
 - Article reaction buttons retain a selected state.
 
@@ -26,7 +26,6 @@
 - HTML structure: no parser errors reported by `tidy` with HTML5 block tags configured.
 - Browser console: 0 errors, 0 warnings.
 - Mobile document overflow: 0px at 390 x 844.
-- Inline-comment text width: 314px; the floating like badge has 2.66px clearance from text and 3px clearance from the next news row.
-- Inline-comment text/like overlap: false; like/next-row overlap: false.
+- Inline-comment metadata keeps the avatar, user identity/time, and like count on one row; the comment body has no text/like overlap and remains below the metadata.
 - Broken images: 0.
 - Active product screen count: 1.

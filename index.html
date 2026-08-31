@@ -354,24 +354,40 @@
     }
 
     .inline-comment-meta {
-      min-height: 22px;
+      min-height: 26px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
     }
 
-    .inline-comment-meta strong {
+    .inline-comment-author {
       min-width: 0;
+      min-height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1px;
+    }
+
+    .inline-comment-author strong {
       overflow: hidden;
       color: #252a33;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+
+    .inline-comment-author small {
+      color: #8a919c;
+      font-size: 8.5px;
+      line-height: 1.15;
       white-space: nowrap;
     }
 
     .inline-comment-content p {
-      margin: 0;
+      margin: 4px 0 0;
       display: -webkit-box;
       overflow: hidden;
       color: #363b44;
@@ -782,7 +798,7 @@
           <div class="news-thumb"><img src="./assets/news-thumb.png" alt="Player news thumbnail"></div>
           <button class="inline-comment" type="button" data-open-comments>
             <i class="comment-avatar" style="background-image:url('./assets/avatar-2.jpg')"></i>
-            <span class="inline-comment-content"><span class="inline-comment-meta"><strong>Keeper Union</strong><span class="inline-like">👍 612</span></span><p>Conceding three does not mean he played badly. He saved two clear chances.</p></span>
+            <div class="inline-comment-content"><div class="inline-comment-meta"><span class="inline-comment-author"><strong>Keeper Union</strong><small>2 hours ago</small></span><span class="inline-like">👍 612</span></div><p>Conceding three does not mean he played badly. He saved two clear chances.</p></div>
           </button>
         </article>
 
@@ -791,7 +807,7 @@
           <div class="news-thumb"><img src="./assets/stadium.jpg" alt="Stadium at night"></div>
           <button class="inline-comment" type="button" data-open-comments>
             <i class="comment-avatar" style="background-image:url('./assets/avatar-3.jpg')"></i>
-            <span class="inline-comment-content"><span class="inline-comment-meta"><strong>Alpine End</strong><span class="inline-like">👍 284</span></span><p>Mianzambi did more than score. His runs made Switzerland's attack flow.</p></span>
+            <div class="inline-comment-content"><div class="inline-comment-meta"><span class="inline-comment-author"><strong>Alpine End</strong><small>3 hours ago</small></span><span class="inline-like">👍 284</span></div><p>Mianzambi did more than score. His runs made Switzerland's attack flow.</p></div>
           </button>
         </article>
 
