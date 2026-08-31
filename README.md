@@ -2,6 +2,10 @@
 
 Standalone static demo combining the news home and article-entry flows.
 
+Public demo: https://1205680593-droid.github.io/news-community-demo/
+
+Source repository: https://github.com/1205680593-droid/news-community-demo
+
 ## Pages and interaction
 
 - The home screen opens by default.
